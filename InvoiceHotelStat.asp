@@ -114,7 +114,6 @@ function doPrint()
             <TD width="65">Time out</TD>
             <TD width="40">Rate</TD>
             <TD width="50">Hours</TD>
-            <TD width="50">Break</TD>
             <TD width="100">Amount SGD</TD>
           </TR>
 
@@ -127,7 +126,6 @@ function doPrint()
         i = 0
         total = 0
         hours = 0
-        breaks = 0
         If (Not rs.eof) And (Not rs.bof) Then
           Do While (Not rs.eof) And (Not rs.bof) 
             i = i+1
@@ -141,12 +139,10 @@ function doPrint()
           <TD style="text-align:center"><%=formatDate2Time(rs("timeout"))%></TD>
           <TD style="text-align:center"><%=formatMoney(rs("hotelrate"))%></TD>
           <TD style="text-align:center"><%=formatMoney(rs("hours"))%></TD>
-          <TD style="text-align:center"><%=formatMoney(rs("break"))%></TD>
           <TD style="text-align:center"><%=formatMoney(rs("amount"))%></TD>
         </TR>
 <%
             hours = hours + rs("hours") - rs("break")
-            breaks = breaks+rs("break")
             total = total + rs("amount")
             rs.MoveNext
           Loop
@@ -162,11 +158,7 @@ function doPrint()
 
         <TABLE cellpadding="0" width="700" cellspacing="0" align="center">
           <TR height="30">
-            <TD style="padding-left:500px" colspan="10" width="100%"  style="font-size:13pt;font-weight:bold;">
-              <font color="#AABF31"><%=formatMoney(hours)%></font>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <font color="#AABF31"><%=formatMoney(breaks)%></font>
-            </TD>
+            <TD style="padding-left:560px" colspan="10" width="100%"  style="font-size:13pt;font-weight:bold;"><font color="#AABF31"><%=formatMoney(hours)%></font>&nbsp;&nbsp;</TD>
           </TR>
         </TABLE>
 

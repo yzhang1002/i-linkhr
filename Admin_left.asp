@@ -44,6 +44,13 @@ proLoadimg();
 </script>
 </head>
 <body>
+<table cellpadding=0 cellspacing=0 width=158 align=center>
+  <tr>
+    <td height=42 valign=bottom>
+      <img src="images/admin_title.gif" width=158 border=0 height=38>
+    </td>
+  </tr>
+</table>
 <%
 If instr(Session("right"),"1") <> 0 Then
 %>
@@ -51,7 +58,7 @@ If instr(Session("right"),"1") <> 0 Then
 <table cellpadding=0 cellspacing=0 width=158 align=center style="display: ">
   <tr style="cursor:hand;">
     <td height=25 class="menu_title" background="images/admin_title_bg_show.gif" onmouseover="this.className='menu_title2';" onmouseout="this.className='menu_title';"> 
-      <span><a href="sysadmin.asp" target=right>System Admin</a></span> </td>
+      <span><a href="sysadmin.asp" target=right>System administrator</a></span> </td>
   </tr>
 </table>
 <%
@@ -65,11 +72,11 @@ If instr(Session("right"),"2") <> 0 Then
   <tr style="cursor:hand;">         
       
     <td height=25 class="menu_title" background="images/admin_title_bg_show.gif" onmouseover="this.className='menu_title2';" onmouseout="this.className='menu_title';" onclick="menuChange(this,menu12);"> 
-      <span>Basic Info.</span> </td>
+      <span>Basic information</span> </td>
   </tr>
   <tr>
     <td>
-      <div class=sec_menu id=menu12 style="display: ">
+      <div class=sec_menu style="width: 158; height: 40" id=menu12 style="display: ">
         <table cellpadding=0 cellspacing=0 align=center width=140 height="40">
           <tr height="20"> 
             <td height="18" align="left"><a href="staff_input.asp" target="right">Staff management</a></td>
@@ -92,11 +99,11 @@ If instr(Session("right"),"3") <> 0 Then
 <table cellpadding=0 cellspacing=0 width=158 align=center style="display: ">
   <tr style="cursor:hand;">
     <td height=25 class="menu_title" background="images/admin_title_bg_show.gif" onmouseover="this.className='menu_title2';" onmouseout="this.className='menu_title';" onclick="menuChange(this,menu13);"> 
-      <span>Operation Dept.</span> </td>
+      <span>Operation Department</span> </td>
   </tr>
   <tr>
     <td>
-      <div class=sec_menu id="menu13" style="display: ">
+      <div class=sec_menu style="width: 158; height: 40" id="menu13" style="display: ">
         <table cellpadding=0 cellspacing=0 align=center width=140 height="40">
           <tr height="20">
             <td align="left" height="18"><a href="sign_add.asp" target="right">Attendance Key-In</a></td>
@@ -119,11 +126,11 @@ If instr(Session("right"),"4") <> 0 Then
 <table cellpadding=0 cellspacing=0 width=158 align="center" style="display: ">
   <tr style="cursor:hand;">
     <td height=25 class="menu_title" background="images/admin_title_bg_show.gif" onmouseover="this.className='menu_title2';" onmouseout="this.className='menu_title';" onclick="menuChange(this,menu14);"> 
-      <span>Finance Dept.</span> </td>
+      <span>Finance Department</span> </td>
   </tr>
   <tr>
     <td>
-      <div class=sec_menu id="menu14" style="display: ">
+      <div class=sec_menu style="width: 158; height: 40" id="menu14" style="display: ">
         <table cellpadding=0 cellspacing=0 align=center width=140 height="40">
           <tr height="20">
             <td height="18" align="left"><a href="invoice_hotel.asp" target="right">Hotel Invoice </a></td>
@@ -132,10 +139,10 @@ If instr(Session("right"),"4") <> 0 Then
             <td align="left" height="18"><a href="pament_staff.asp" target="right">Staff Payment</a></td>
           </tr>
           <tr height="20">
-            <td align="left" height="18"><a href="customer.asp" target="right">Client Info.</a></td>
+            <td align="left" height="18"><a href="customer.asp" target="right">Client Information</a></td>
           </tr>
           <tr height="20">
-            <td align="left" height="18"><a href="company.asp" target="right">Company Info.</a></td>
+            <td align="left" height="18"><a href="company.asp" target="right">Company Information</a></td>
           </tr>
           <tr height="20"> 
             <td height="18" align="left"><a href="revenue.asp" target="right">Revenue Report</a></td>
@@ -159,7 +166,7 @@ End If
   </tr>
   <tr>
     <td>
-      <div class=sec_menu id=menu6 style="display: ">
+      <div class=sec_menu style="width:158px;" id=menu6 style="display: ">
         <table cellpadding=0 cellspacing=0 align=center width=140>
           <tr height=20>
             <td>I-LINKHR</td>
