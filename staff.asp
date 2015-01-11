@@ -11,11 +11,17 @@
 <script type="text/javascript" src="js/facebox/facebox.js"></script>
 <script type="text/javascript" src="js/jquery.qtip-1.0.0.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-
+<script type="text/javascript" type="text/javascript" src="js/WebCalendar.js"></script>
 
 <script language=javascript>
 <!--
 var g_html = "";
+var m_page = 1;
+var m_where = "";
+
+var tmp_page = "<%=Request("page")%>";
+var tmp_where = "<%=Request("txtWhere")%>";
+
 $(document).ready(function(){
   g_html = $("#winDiv").html();
   $("#winDiv").html("");
@@ -82,11 +88,14 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
+  if(tmp_page!=''&&tmp_where!='')
+  {
+    m_page = tmp_page;
+    m_where = EncodeUtf8(tmp_where);
+  }
   getDataList();
 });
 
-var m_page = 1;
-var m_where = "";
 function getDataList()
 {
   showHint("Data Loading...");
@@ -133,8 +142,36 @@ function doDel(sStaffID)
 function doQuery()
 {
   var where = getWhere("query-form");
+  var joindatestr = getJoinDateStr();
+  if(where!=""||joindatestr!=""){
+    if(where==""){
+        where  = joindatestr;
+    }
+    else if(joindatestr==""){
+
+    }
+    else{
+        where  = where + " AND " +joindatestr;
+    }
+  }
   m_where = EncodeUtf8(where);
   getDataList();
+}
+
+function getJoinDateStr(){
+  var joindatestr = "";
+  var fdatestr = "#2000-01-01#";
+  var tdatestr = "#2100-12-31#";
+  if($("#fdate").val()!=""||$("#tdate").val()!=""){
+    if($("#fdate").val()!=""){
+      fdatestr = "#"+$("#fdate").val()+"#";
+    }
+    else if($("#tdate").val()!=""){
+      tdatestr = "#"+$("#tdate").val()+"#";
+    }
+    joindatestr = "join_date between "+fdatestr+" AND "+tdatestr;
+  }
+  return joindatestr;
 }
 -->
 </script>
@@ -160,7 +197,7 @@ function doQuery()
               <TD width="200px">&nbsp;<input type="text" class="f-input" name="cusname" operation="like"></TD>
               <TD>&nbsp;&nbsp;</TD>
               <TD align="right">IC:</TD>
-              <TD>&nbsp;<input type="text" class="f-input" name="ic"></TD>
+              <TD>&nbsp;<input type="text" class="f-input" name="ic" operation="like"></TD>
             </TR>
             <TR height="30">
               <TD align="right">Passport No:</TD>
@@ -198,6 +235,16 @@ function doQuery()
                 </select>
               
               </TD>
+            </TR>
+            <TR height="30">
+              <TD align="right"><b>Join date:</b></TD>
+            </TR>
+            <TR height="30">
+              <TD align="right">From:</TD>
+              <TD>&nbsp;<input type="text" class="f-input" id="fdate" name="fdate" ignore="true" onfocus="return SelectDate(this,'yyyy-MM-dd')"></TD>
+              <TD>&nbsp;&nbsp;</TD>
+              <TD align="right">To:</TD>
+              <TD>&nbsp;<input type="text" class="f-input" id="tdate" name="tdate" ignore="true" onfocus="return SelectDate(this,'yyyy-MM-dd')"></TD>
               <TD>&nbsp;&nbsp;</TD>
               <TD colspan="2">&nbsp;<input type="button" class="but2" id="query" name="query" value="Query" onclick="doQuery()">
               

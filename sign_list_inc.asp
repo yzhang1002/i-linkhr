@@ -1,6 +1,33 @@
 <%@ Language=VBScript%>
 <!--#include file="conn.asp"-->
+<%
+  Function URLDecode(sConvert)
+      Dim aSplit
+      Dim sOutput
+      Dim I
+      If IsNull(sConvert) Then
+         URLDecode = ""
+         Exit Function
+      End If
 
+      ' convert all pluses to spaces
+      sOutput = REPLACE(sConvert, "+", " ")
+
+      ' next convert %hexdigits to the character
+      aSplit = Split(sOutput, "%")
+
+      If IsArray(aSplit) Then
+        sOutput = aSplit(0)
+        For I = 0 to UBound(aSplit) - 1
+          sOutput = sOutput & _
+            Chr("&H" & Left(aSplit(i + 1), 2)) &_
+            Right(aSplit(i + 1), Len(aSplit(i + 1)) - 2)
+        Next
+      End If
+
+      URLDecode = sOutput
+  End Function
+%>
       <TABLE class="sList" cellpadding="0" cellspacing="0">
         <TR class="title" height="30">
           <TD width="20">No.</TD>
@@ -15,9 +42,12 @@
           <TD width="70">Operation</TD>
         </TR>
 <%
-strWhere = Request("txtWhere")
-If strWhere <> "" Then
-  strWhere = " where " & strWhere
+
+If Request("txtWhere")<>"" Then
+  strWhere = URLDecode(Replace(Server.URLEncode(Request("txtWhere")),"%B0","°"))
+  If strWhere <> "" Then
+    strWhere = " where " & strWhere
+  End If
 End If
 
 sql = "select * from sign_base " & strWhere & " order by signdate desc ,signid desc"
@@ -50,7 +80,7 @@ If (Not rs.eof) And (Not rs.bof) Then
           <TD><%=formatSpChar2Nor(rs("venuename"))%></TD>
           <TD><%=formatSpChar2Nor(rs("attention"))%></TD>
           <TD style="text-align:center">&nbsp;<%=formatSpChar2Nor(rs("staffnum"))%></TD>
-          <TD style="text-align:center"><a href="sign_edit.asp?signid=<%=formatSpChar2Nor(rs("signid"))%>" class="channel">Edit</a> / <a href="#" onclick="doDel('<%=formatSpChar2Nor(rs("signid"))%>')" class="channel">Delete</a></TD>
+          <TD style="text-align:center"><a href="sign_edit.asp?signid=<%=formatSpChar2Nor(rs("signid"))%>&page=<%=Page%>&txtwhere=<%=Replace(Server.URLEncode(Request("txtWhere")),"%B0","°")%>" class="channel">Edit</a> / <a href="#" onclick="doDel('<%=formatSpChar2Nor(rs("signid"))%>')" class="channel">Delete</a></TD>
         </TR>
 
 <%

@@ -15,12 +15,21 @@
 
 <script language=javascript>
 <!--
+var m_page = 1;
+var m_where = "";
+
+var tmp_page = "<%=Request("page")%>";
+var tmp_where = "<%=Request("txtWhere")%>";
+
 $(document).ready(function(){
+  if(tmp_page!=''&&tmp_where!='')
+  {
+    m_page = tmp_page;
+    m_where = EncodeUtf8(tmp_where);
+  }
   getDataList();
 });
 
-var m_page = 1;
-var m_where = "";
 function getDataList()
 {
   showHint("Data Loading...");

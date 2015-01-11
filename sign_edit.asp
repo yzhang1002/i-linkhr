@@ -13,6 +13,11 @@
 <script language="JavaScript" type="text/javascript" src="js/WebCalendar.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 
+<%
+strWhere = Request("txtWhere")
+strWhere = Server.URLEncode(strWhere)
+%>
+
 <script language=javascript>
 <!--
 var g_html = "";
@@ -280,7 +285,7 @@ function doSave()
         if(msg == "")
         {
           alert("Save successfully.");
-          location.href="sign_list.asp";
+          location.href="sign_list.asp?page=<%=Request("page")%>&txtwhere=<%=strWhere%>";
         }
         else
         {

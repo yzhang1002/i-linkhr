@@ -11,7 +11,10 @@
 <script type="text/javascript" src="js/facebox/facebox.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/WebCalendar.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-
+<%
+strWhere = Request("txtWhere")
+strWhere = Server.URLEncode(strWhere)
+%>
 
 <script language=javascript>
 <!--
@@ -30,7 +33,7 @@ $(document).ready(function(){
         setInputValue(obj.data,"base-form");
 
         $("input[name='birthday']").val(formatStr2EnDate(obj.data.birthday));
-		$("input[name='join_date']").val(formatStr2EnDate(obj.data.join_date));
+		    $("input[name='join_date']").val(formatStr2EnDate(obj.data.join_date));
 
         $("#operation").html("Modify Staff Information");
         $("input[name='op']").val("1");
@@ -129,7 +132,7 @@ function doSubmit()
       if(msg == "")
       {
         alert("Save successfully.");
-        location.href="staff.asp";
+        location.href="staff.asp?page=<%=Request("page")%>&txtwhere=<%=strWhere%>";
       }
       else
       {

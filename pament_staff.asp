@@ -5,15 +5,29 @@
 <title>I-LINKHR Management System</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="css/css.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.timer.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/WebCalendar.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 
+<script src="js/external/jquery/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+
 <script language=javascript>
 <!--
 $(document).ready(function(){
   // getDataList();
+var availableTags=[];
+$("#staffid option").each(function()
+{
+    availableTags.push($(this).text());
+});
+
+
+  $( "#autocomplete" ).autocomplete({
+    source: availableTags
+  });
 });
 
 function doQryStaff()
@@ -72,6 +86,17 @@ function doQryStaff()
 function doQueryPayment()
 {
 
+  if($("#autocomplete").val()!=""){
+    var staffidval = $('#staffid option').filter(function () { return $(this).html() == $("#autocomplete").val(); }).val();
+    if(!staffidval){
+      alert("Please check the staff name!");
+      $("#staffid").val('');
+    }
+    else{
+      $("#staffid").val(staffidval);
+    }
+  }
+
   obj = $("select[name='staffid']")
   if($.trim(obj.val()) == "")
   {
@@ -117,14 +142,14 @@ function doQueryPayment()
           <TABLE cellpadding="0" cellspacing="0">
             <TR height="30">
               <TD align="right" width="40px">Name:</TD>
-              <TD>&nbsp;<input type="text" class="f-input" name="name"></TD>
+              <TD>&nbsp;<input type="text" class="f-input" id="autocomplete" name="name"></TD>
               <TD width="40px" align="right">IC:</TD>
               <TD>&nbsp;<input type="text" class="f-input" name="ic"></TD>
               <TD width="40px"><img style="cursor:pointer;margin-top:5px;" onclick="doQryStaff()" src="images/qry.jpg"></TD>
             </TR>
             <TR height="30">
               <TD align="left" style="padding-left:10px;"><B>Staff:</B></TD>
-              <TD>&nbsp;        <select name="staffid" style="width:155px">
+              <TD>&nbsp;        <select name="staffid" id="staffid" style="width:155px">
           <option value="">--Please Select--</option>
         <%
         sql = "select staffid,name from staff order by name"
