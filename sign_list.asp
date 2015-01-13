@@ -45,7 +45,7 @@ function setPage(sPage)
   getDataList();
 }
 
-function doDel(sSignID)
+function doDel(sSignID,cpage)
 {
   if(confirm("Are you sure to delete the sign information?"))
   {
@@ -59,7 +59,7 @@ function doDel(sSignID)
         if(msg == "")
         {
           alert("Delete successfully.");
-          setPage(1);
+          setPage(cpage);
         }
         else
         {

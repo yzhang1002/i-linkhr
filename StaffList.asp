@@ -78,7 +78,7 @@ If (Not rs.eof) And (Not rs.bof) Then
           <TD><%=formatSpChar2Nor(rs("school"))%></TD>
           <TD><%=formatSpChar2Nor(rs("address"))%></TD>
 		      <TD><%=formatDate2En(rs("join_date"))%></TD>
-          <TD style="text-align:center"><a href="staff_input.asp?staffid=<%=formatSpChar2Nor(rs("staffid"))%>&page=<%=Page%>&txtwhere=<%=Replace(Server.URLEncode(Request("txtWhere")),"%B0","°")%>" class="channel">Edit</a> / <a href="#" onclick="doDel('<%=formatSpChar2Nor(rs("staffid"))%>')" class="channel">Delete</a></TD>
+          <TD style="text-align:center"><a href="staff_input.asp?staffid=<%=formatSpChar2Nor(rs("staffid"))%>&page=<%=Page%>&txtwhere=<%=Replace(Server.URLEncode(Request("txtWhere")),"%B0","°")%>" class="channel">Edit</a> / <a href="#" onclick="doDel('<%=formatSpChar2Nor(rs("staffid"))%>','<%=Page%>')" class="channel">Delete</a></TD>
       </TR>
 
 <%

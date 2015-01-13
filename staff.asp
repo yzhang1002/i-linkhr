@@ -111,7 +111,7 @@ function setPage(sPage)
   getDataList();
 }
 
-function doDel(sStaffID)
+function doDel(sStaffID,cpage)
 {
   if(confirm("Are you sure to delete the staff information?"))
   {
@@ -125,7 +125,7 @@ function doDel(sStaffID)
         if(msg == "")
         {
           alert("Delete successfully.");
-          setPage(1);
+          setPage(cpage);
         }
         else
         {

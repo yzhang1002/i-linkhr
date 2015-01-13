@@ -80,7 +80,7 @@ If (Not rs.eof) And (Not rs.bof) Then
           <TD><%=formatSpChar2Nor(rs("venuename"))%></TD>
           <TD><%=formatSpChar2Nor(rs("attention"))%></TD>
           <TD style="text-align:center">&nbsp;<%=formatSpChar2Nor(rs("staffnum"))%></TD>
-          <TD style="text-align:center"><a href="sign_edit.asp?signid=<%=formatSpChar2Nor(rs("signid"))%>&page=<%=Page%>&txtwhere=<%=Replace(Server.URLEncode(Request("txtWhere")),"%B0","°")%>" class="channel">Edit</a> / <a href="#" onclick="doDel('<%=formatSpChar2Nor(rs("signid"))%>')" class="channel">Delete</a></TD>
+          <TD style="text-align:center"><a href="sign_edit.asp?signid=<%=formatSpChar2Nor(rs("signid"))%>&page=<%=Page%>&txtwhere=<%=Replace(Server.URLEncode(Request("txtWhere")),"%B0","°")%>" class="channel">Edit</a> / <a href="#" onclick="doDel('<%=formatSpChar2Nor(rs("signid"))%>','<%=Page%>')" class="channel">Delete</a></TD>
         </TR>
 
 <%
