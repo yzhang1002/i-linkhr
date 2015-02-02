@@ -163,19 +163,19 @@ function doPrint()
         <TABLE cellpadding="0" width="700" cellspacing="0" align="center">
           <TR height="30">
             <TD style="padding-left:500px" colspan="10" width="100%"  style="font-size:13pt;font-weight:bold;">
-              <font color="#AABF31"><%=formatMoney(hours)%></font>
+              <font color="#000"><%=formatMoney(hours)%></font>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <font color="#AABF31"><%=formatMoney(breaks)%></font>
+              <font color="#000"><%=formatMoney(breaks)%></font>
             </TD>
           </TR>
         </TABLE>
 
         <TABLE cellpadding="0" width="700" cellspacing="0" align="center">
           <TR height="30">
-            <TD style="text-align:right;" colspan="10" width="100%"  style="font-size:13pt;font-weight:bold;">Total:&nbsp;&nbsp;<font color="#AABF31"><%=formatMoney(total)%></font>&nbsp;&nbsp;</TD>
+            <TD style="text-align:right;" colspan="10" width="100%"  style="font-size:13pt;font-weight:bold;">Total:&nbsp;&nbsp;<font color="#000"><%=formatMoney(total)%></font>&nbsp;&nbsp;</TD>
           </TR>
           <TR height="30">
-            <TD style="text-align:right;" colspan="10" width="100%"  style="font-size:13pt;font-weight:bold;">Amount Payable:&nbsp;&nbsp;<font color="#AABF31"><%=formatMoney(total)%></font>&nbsp;&nbsp;</TD>
+            <TD style="text-align:right;" colspan="10" width="100%"  style="font-size:13pt;font-weight:bold;">Amount Payable:&nbsp;&nbsp;<font color="#000"><%=formatMoney(total)%></font>&nbsp;&nbsp;</TD>
           </TR>
           <TR height="30">
             <TD style="text-align:left;" style="font-size:13pt;font-weight:bold;">FOR I-LINKHR PTE LTD</TD>
